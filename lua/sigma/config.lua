@@ -16,7 +16,6 @@ local function opt(key, default)
 end
 
 config = {
-  style = opt("style", "storm"),
   dayBrightness = opt("day_brightness", 0.3),
   transparent = opt("transparent", false),
   commentStyle = opt("italic_comments", true) and "italic" or "NONE",
@@ -34,9 +33,5 @@ config = {
   transform_colors = false,
   lualineBold = opt("lualine_bold", false),
 }
-
-if config.style == "day" then
-  vim.o.background = "light"
-end
 
 return config

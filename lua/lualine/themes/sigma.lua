@@ -1,5 +1,4 @@
-local config = require("sigma.config")
-local colors = require("sigma.colors").setup(config)
+local colors = require("sigma.colors")
 local util = require("sigma.util")
 
 local sigma = {}
