@@ -6,4 +6,4 @@
 " lua package.loaded['sigma.util'] = nil
 lua package.loaded['sigma.config'] = nil
 
-lua require('sigma').colorscheme()
+lua require('sigma').setup()

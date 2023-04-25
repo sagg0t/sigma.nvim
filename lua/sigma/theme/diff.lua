@@ -1,12 +1,12 @@
 local c = require("sigma.colors")
 
 return {
-    diffAdded = { fg = c.green1 },
-    diffRemoved = { fg = c.red2 },
-    diffChanged = { fg = c.git.change },
-    diffOldFile = { fg = c.yellow1 },
-    diffNewFile = { fg = c.orange3 },
-    diffFile = { fg = c.cyan6 },
-    diffLine = { fg = c.comment },
-    diffIndexLine = { fg = c.magenta4 },
+    diffAdded       = { fg = c.green },
+    diffRemoved     = { fg = c.red },
+    diffChanged     = { fg = c.git.change },
+    diffOldFile     = { fg = c.darkYellow },
+    diffNewFile     = { fg = c.orangeDimmed },
+    diffFile        = { fg = c.darkCyanyan },
+    diffLine        = { fg = c.comment },
+    diffIndexLine   = { fg = c.lightPinkDimmed },
 }

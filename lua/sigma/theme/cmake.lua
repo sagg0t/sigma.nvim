@@ -2,10 +2,10 @@ local c = require("sigma.colors")
 
 return {
     cmakeCommand              = { fg = c.white },
-    cmakeArguments            = { fg = c.cyan6 },
-    cmakeKWvariable_watch     = { fg = c.cyan3 },
-    cmakeKWproject            = { fg = c.pink1 },
-    cmakeGeneratorExpressions = { fg = c.purple4 },
-    cmakeVariable             = { fg = c.cyan3 },
-    cmakeKWuse_mangled_mesa   = { fg = c.fg, style = 'italic' },
+    cmakeArguments            = { fg = c.darkCyan },
+    cmakeKWvariable_watch     = { fg = c.lightCyan },
+    cmakeKWproject            = { fg = c.pinkNeon },
+    cmakeGeneratorExpressions = { fg = c.redDanger },
+    cmakeVariable             = { fg = c.lightCyan },
+    cmakeKWuse_mangled_mesa   = { fg = c.fg, italic = true },
 }

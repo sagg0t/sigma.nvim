@@ -83,38 +83,6 @@ function util.getColor(color)
   return util.colorCache[color]
 end
 
--- local ns = vim.api.nvim_create_namespace("sigma")
-function util.highlight(group, color)
-  if color.fg then
-    util.colorsUsed[color.fg] = true
-  end
-  if color.bg then
-    util.colorsUsed[color.bg] = true
-  end
-  if color.sp then
-    util.colorsUsed[color.sp] = true
-  end
-
-  local style = color.style and "gui=" .. color.style or "gui=NONE"
-  local fg = color.fg and "guifg=" .. util.getColor(color.fg) or "guifg=NONE"
-  local bg = color.bg and "guibg=" .. util.getColor(color.bg) or "guibg=NONE"
-  local sp = color.sp and "guisp=" .. util.getColor(color.sp) or ""
-
-  local hl = "highlight " .. group .. " " .. style .. " " .. fg .. " " .. bg .. " " .. sp
-
-  if color.link then
-    vim.cmd("highlight! link " .. group .. " " .. color.link)
-  else
-    -- local data = {}
-    -- if color.fg then data.foreground = color.fg end
-    -- if color.bg then data.background = color.bg end
-    -- if color.sp then data.special = color.sp end
-    -- if color.style then data[color.style] = true end
-    -- vim.api.nvim_set_hl(ns, group, data)
-    vim.cmd(hl)
-  end
-end
-
 function util.debug(colors)
   colors = colors or require("sigma.colors")
   -- Dump unused colors
@@ -129,84 +97,12 @@ function util.debug(colors)
   end
 end
 
---- Delete the autocmds when the theme changes to something else
-function util.onColorScheme()
-  if vim.g.colors_name ~= "sigma" then
-    vim.cmd([[autocmd! Sigma]])
-    vim.cmd([[augroup! Sigma]])
-  end
-end
-
 ---@param config Config
 function util.autocmds(config)
   vim.cmd([[augroup Sigma]])
   vim.cmd([[  autocmd!]])
   vim.cmd([[  autocmd ColorScheme * lua require("sigma.util").onColorScheme()]])
-  if config.dev then
-    vim.cmd([[  autocmd BufWritePost */lua/sigma/** nested colorscheme sigma]])
-  end
-  for _, sidebar in ipairs(config.sidebars) do
-    if sidebar == "terminal" then
-      vim.cmd([[  autocmd TermOpen * setlocal winhighlight=Normal:NormalSB,SignColumn:SignColumnSB]])
-    else
-      vim.cmd([[  autocmd FileType ]] .. sidebar .. [[ setlocal winhighlight=Normal:NormalSB,SignColumn:SignColumnSB]])
-    end
-  end
   vim.cmd([[augroup end]])
-end
-
--- Simple string interpolation.
---
--- Example template: "${name} is ${value}"
---
----@param str string template string
----@param table table key value pairs to replace in the string
-function util.template(str, table)
-  return (str:gsub("($%b{})", function(w)
-    return table[w:sub(3, -2)] or w
-  end))
-end
-
-function util.syntax(syntax)
-  for group, colors in pairs(syntax) do
-    util.highlight(group, colors)
-  end
-end
-
----@param colors ColorScheme
-function util.terminal(colors)
-  -- dark
-  vim.g.terminal_color_0 = colors.black
-  vim.g.terminal_color_8 = colors.terminal_black
-
-  -- light
-  vim.g.terminal_color_7 = colors.fg_dark
-  vim.g.terminal_color_15 = colors.fg
-
-  -- colors
-  vim.g.terminal_color_1 = colors.red
-  vim.g.terminal_color_9 = colors.red
-
-  vim.g.terminal_color_2 = colors.green
-  vim.g.terminal_color_10 = colors.green
-
-  vim.g.terminal_color_3 = colors.yellow
-  vim.g.terminal_color_11 = colors.yellow
-
-  vim.g.terminal_color_4 = colors.blue
-  vim.g.terminal_color_12 = colors.blue
-
-  vim.g.terminal_color_5 = colors.magenta
-  vim.g.terminal_color_13 = colors.magenta
-
-  vim.g.terminal_color_6 = colors.cyan
-  vim.g.terminal_color_14 = colors.cyan
-
-  if vim.o.background == "light" then
-    for i = 0, 15, 1 do
-      vim.g["terminal_color_" .. i] = util.getColor(vim.g["terminal_color_" .. i])
-    end
-  end
 end
 
 function util.light_colors(colors)
@@ -218,85 +114,6 @@ function util.light_colors(colors)
     ret[key] = util.light_colors(value)
   end
   return ret
-end
-
----@param theme Theme
-function util.load(theme)
-  -- only needed to clear when not the default colorscheme
-  if vim.g.colors_name then
-    vim.cmd("hi clear")
-  end
-  -- if vim.fn.exists("syntax_on") then
-  --   vim.cmd("syntax reset")
-  -- end
-
-  vim.o.termguicolors = true
-  vim.g.colors_name = "sigma"
-  -- vim.api.nvim__set_hl_ns(ns)
-  -- load base theme
-  util.syntax(theme.base)
-  util.terminal(theme.colors)
-  util.autocmds(theme.config)
-
-  vim.defer_fn(function()
-    util.syntax(theme.defer)
-  end, 100)
-end
-
----@param config Config
----@param colors ColorScheme
-function util.color_overrides(colors, config)
-  if type(config.colors) == "table" then
-    for key, value in pairs(config.colors) do
-      if not colors[key] then
-        error("Color " .. key .. " does not exist")
-      end
-
-      -- Patch: https://github.com/ful1e5/onedark.nvim/issues/6
-      if type(colors[key]) == "table" then
-        util.color_overrides(colors[key], { colors = value })
-      else
-        if value:lower() == "none" then
-          -- set to none
-          colors[key] = "NONE"
-        elseif string.sub(value, 1, 1) == "#" then
-          -- hex override
-          colors[key] = value
-        else
-          -- another group
-          if not colors[value] then
-            error("Color " .. value .. " does not exist")
-          end
-          colors[key] = colors[value]
-        end
-      end
-    end
-  end
-end
-
-function util.light(brightness)
-  for hl_name, hl in pairs(vim.api.nvim__get_hl_defs(0)) do
-    local def = {}
-    for key, def_key in pairs({ foreground = "fg", background = "bg", special = "sp" }) do
-      if type(hl[key]) == "number" then
-        local hex = string.format("#%06x", hl[key])
-        local color = util.invertColor(hex)
-        if brightness then
-          color = util.brighten(hex, brightness)
-        end
-        table.insert(def, "gui" .. def_key .. "=" .. color)
-      end
-    end
-    if hl_name ~= "" and #def > 0 then
-      for _, style in pairs({ "bold", "italic", "underline", "undercurl", "reverse" }) do
-        if hl[style] then
-          table.insert(def, "gui=" .. style)
-        end
-      end
-
-      vim.cmd("highlight! " .. hl_name .. " " .. table.concat(def, " "))
-    end
-  end
 end
 
 function util.random()

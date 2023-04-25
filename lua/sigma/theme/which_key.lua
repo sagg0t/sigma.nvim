@@ -1,11 +1,11 @@
 local c = require("sigma.colors")
 
 return {
-    WhichKey = { fg = c.cyan5 },
-    WhichKeyGroup = { fg = c.red3 },
-    WhichKeyDesc = { fg = c.magenta3 },
+    WhichKey = { fg = c.cyan },
+    WhichKeyGroup = { fg = c.lightRed },
+    WhichKeyDesc = { fg = c.pinkWarm },
     WhichKeySeperator = { fg = c.comment },
     WhichKeySeparator = { fg = c.comment },
-    WhichKeyFloat = { bg = c.black2 },
-    WhichKeyValue = { fg = c.magenta2 },
+    WhichKeyFloat = { bg = c.black3 },
+    WhichKeyValue = { fg = c.pink },
 }
