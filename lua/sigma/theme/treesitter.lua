@@ -1,14 +1,7 @@
 local c = require("sigma.colors")
-local config = require("sigma.config")
 local util = require("sigma.util")
 
 return {
-    -- These groups are for the neovim tree-sitter highlights.
-    -- As of writing, tree-sitter support is a WIP, group names may change.
-    -- By default, most of these groups link to an appropriate Vim group,
-    -- TSError -> Error for example, so you do not have to define these unless
-    -- you explicitly want to support Treesitter"s improved syntax awareness.
-
     ["@annotation"]             = { fg = c.lightYellowDimmed }, -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
     ["@attribute"]              = { fg = c.lightCyan }, -- (unstable) TODO: docs
     ["@boolean"]                = { link = "Boolean" }, -- For booleans.
@@ -28,15 +21,15 @@ return {
     ["@field"]                  = { fg = c.lightBlue }, -- For fields.
     ["@float"]                  = { link = "Float" }, -- For floats.
     ["@function"]               = { link = "Function" }, -- For function (calls and definitions).
-    ["@func.builtin"]           = { fg = c.pinkNeon }, -- For builtin functions: `table.insert` in Lua.
-    ["@func.macro"]             = { link = "Macro" }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+    ["@function.builtin"]       = { fg = c.purple }, -- For builtin functions: `table.insert` in Lua.
+    ["@function.macro"]         = { link = "Macro" }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
     ["@include"]                = { link = "Include" }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
     ["@keyword"]                = { link = "Keyword" }, -- For keywords that don"t fall in previous categories.
-    -- ["@keyword.function"]       = { fg = c.pink1 }, -- For keywords used to define a fuction.
+    -- ["@keyword.function"]       = {}, -- For keywords used to define a fuction.
     -- ["@keyword.operator"]       = { fg = c.cyan6 },
     -- ["@keyword.return"]         = { fg = c.pink1 },
     ["@label"]                  = { fg = c.cyanGreen }, -- For labels: `label:` in C and `:label:` in Lua.
-    rubyTSLabel                 = { fg = util.darken(c.darkCyan, 0.9) },
+    ["@label.ruby"]             = { fg = util.darken(c.darkCyan, 0.9) },
     ["@method"]                 = { fg = c.lightCyan }, -- For method calls and definitions.
     ["@namespace"]              = { fg = c.darkCyan }, -- For identifiers referring to modules and namespaces.
     -- TSNone              = { },    -- TODO: docs
@@ -48,7 +41,7 @@ return {
     ["@punct.bracket"]          = { fg = c.grey6 }, -- For brackets and parens.
     ["@punct.delimiter"]        = { fg = c.grey6 }, -- For delimiters ie: `.`
     ["@punct.special"]          = { fg = c.orangeDimmed }, -- For special punctutation that does not fall in the catagories before.
-    -- TSRepeat            = { },    -- For keywords related to loops.
+    ["@repeat"]                 = { link = "Repeat"},    -- For keywords related to loops.
     ["@string"]                 = { link = "String" }, -- For strings.
     ["@string.escape"]          = { fg = c.darkYellowDimmed }, -- For escape characters within a string.
     ["@string.regex"]           = { fg = c.darkOrange }, -- For regexes.
@@ -58,7 +51,8 @@ return {
     ["@type"]                   = { link = "Type" }, -- For types.
     ["@type.builtin"]           = { fg = c.pinkFat, italic = true }, -- For builtin types.
     ["@type.qualifier"]         = { fg = c.pinkNeon },
-    -- ["@variable"]               = { link = "Identifier" }, -- Any variable name that does not have another highlight.
+    ["@type.definition"]        = { link = "Typedef" },
+    ["@variable"]               = { link = "Identifier" }, -- Any variable name that does not have another highlight.
     ["@variable.builtin"]       = { fg = c.lightRed }, -- Variable names that are defined by the languages, like `this` or `self`.
 
     ["@tag"]                    = { link = "Tag" }, -- Tags like html tag names.
@@ -72,9 +66,6 @@ return {
     ["@title"]                  = { fg = c.UNSET, bold = true }, -- Text that is part of a title.
     ["@literal"]                = { fg = c.darkYellowDimmed }, -- Literal text.
     ["@uri"]                    = { fg = c.darkYellowDimmed, underline = true }, -- Any URI like a link or email.
-
-    -- Lua
-    -- luaTSProperty = { fg = c.red }, -- Same as `TSField`.
 
     ["@lsp.type.class"]         = { fg = c.blueIce },
     ["@lsp.type.struct"]        = { link = "@lsp.type.class" },

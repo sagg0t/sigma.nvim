@@ -2,7 +2,7 @@ local c = require("sigma.colors")
 local util = require("sigma.util")
 
 return {
-    Directory           = { fg = c.darkCyan, bg = c.black3 }, -- directory names (and other special names in listings)
+    Directory           = { fg = c.darkCyan, bg = c.black2 }, -- directory names (and other special names in listings)
     DiffAdd             = { bg = c.diff.add }, -- diff mode: Added line |diff.txt|
     DiffChange          = { bg = c.diff.change }, -- diff mode: Changed line |diff.txt|
     DiffDelete          = { bg = c.diff.delete }, -- diff mode: Deleted line |diff.txt|
@@ -51,8 +51,8 @@ return {
     PmenuThumb          = { bg = c.darkCyan }, -- Popup menu: Thumb of the scrollbar.
     Question            = { fg = c.comment }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine        = { bg = c.grey1, bold = true }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search              = { bg = c.green2, fg = c.bg }, -- Last search pattern highlighting (see "hlsearch").  Also used for similar items that need to stand out.
-    IncSearch           = { bg = c.green1, fg = c.bg }, -- "incsearch" highlighting; also used for the text replaced with ":s///c"
+    Search              = { bg = c.green, fg = c.bg }, -- Last search pattern highlighting (see "hlsearch").  Also used for similar items that need to stand out.
+    IncSearch           = { bg = c.lightGreen, fg = c.bg }, -- "incsearch" highlighting; also used for the text replaced with ":s///c"
     SpecialKey          = { fg = c.grey6, bold = true }, -- Unprintable characters: text displayed differently from what it really is.  But not "listchars" whitespace. |hl-Whitespace|
     Substitute          = { bg = c.red, fg = c.black }, -- |:substitute| replacement text highlighting
     SignColumn          = { bg = c.line_bg, fg = c.non_text }, -- column where |signs| are displayed
@@ -121,7 +121,7 @@ return {
     Type                = { fg = c.blueIce }, -- (preferred) int, long, char, etc.
     StorageClass        = { fg = c.pinkNeon }, -- static, register, volatile, etc.
     Structure           = { fg = c.cyanGreen }, --  struct, union, enum, etc.
-    Typedef             = { fg = c.cyanGreen }, --  A typedef
+    Typedef             = { fg = c.blueIce }, --  A typedef
 
     Special             = { fg = c.orangeDimmed }, -- (preferred) any special symbol
     SpecialChar         = { fg = c.grey4 }, --  special character in a constant
