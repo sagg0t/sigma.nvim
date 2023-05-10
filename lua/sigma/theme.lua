@@ -1,4 +1,3 @@
-local util = require("sigma.util")
 local c = require("sigma.colors")
 local config = require("sigma.config")
 
@@ -7,20 +6,6 @@ theme.config = config
 theme.colors = c
 
 local uncategorised = {
-    -- glyph palette
-    GlyphPalette1       = { fg = c.redDanger },
-    GlyphPalette2       = { fg = c.redDanger },
-    GlyphPalette3       = { fg = c.redDanger },
-    GlyphPalette4       = { fg = c.redDanger },
-    GlyphPalette6       = { fg = c.redDanger },
-    GlyphPalette7       = { fg = c.redDanger },
-    GlyphPalette9       = { fg = c.redDanger },
-
-    -- Neotest
-    -- NeotestFile         = { fg = c.cyan6 },
-    -- NeotestTarget       = { fg = "#000000" },
-    -- NeotestTest         = { fg = "#ffffff" },
-
     -- NeoVim
     healthError         = { fg = c.error },
     healthSuccess       = { fg = c.green },
