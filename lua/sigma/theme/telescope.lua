@@ -1,10 +1,20 @@
 local c = require("sigma.colors")
-local config = require("sigma.config")
 
 return {
-    TelescopeBorder       = { fg = c.grey3, bg = c.black2 },
-    TelescopeNormal       = { fg = c.fg, bg = c.black2 },
-    TelescopeMatching     = { fg = c.red },
-    TelescopePromptPrefix = { fg = c.cyanBlue },
-    TelescopeSelection    = { fg = c.white, bg = c.grey },
+    TelescopeBorder         = { fg = c.black, bg = c.black },
+    TelescopeNormal         = { fg = c.fg, bg = c.black },
+
+    TelescopePromptNormal   = { fg = c.fg, bg = c.black },
+    TelescopePromptBorder   = { fg = c.black, bg = c.black },
+    TelescopePromptTitle    = { fg = c.black, bg = c.black },
+    TelescopePromptPrefix   = { fg = c.lightCyan },
+    TelescopePromptCounter  = { link = "TelescopePromptPrefix" },
+
+    TelescopeResultsNormal  = { bg = c.black },
+    TelescopeResultsBorder  = { fg = c.black, bg = c.black },
+    TelescopeResultsTitle   = { fg = c.black, bg = c.black },
+
+    TelescopeMatching       = { fg = c.pinkNeon, bg = c.black },
+    TelescopeSelection      = { fg = c.white, bg = c.grey },
+    TelescopeSelectionCaret = { fg = c.pinkNeon, bg = c.grey },
 }
