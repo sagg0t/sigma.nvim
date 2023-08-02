@@ -7,7 +7,7 @@ local colors = {
     fg                  = "#F6FADE",
     bg                  = "#161616",
 
-    comment             = "#4C4D4D",
+    comment             = "#6D6D6C", -- used to be #4C4D4D
     context             = "#606060",
     accent              = "#BBBBBB",
     diff_add            = "#587C0C",
@@ -66,7 +66,7 @@ local colors = {
     pink                = "#D16BB7",
     pinkWarm            = "#D16D9E",
     lightPinkDimmed     = "#D68EB2",
-    pinkFat             = "#ee5396",
+    pinkFat             = "#EE5396",
     pinkNeon            = "#F92672",
     purple              = "#8C5EED",
 
@@ -77,6 +77,7 @@ local colors = {
     lightYellow         = "#FFEE99",
     lightYellowDimmed   = "#DCDCAA",
 
+    veryDarkCyan        = "#161C1C",
     darkCyan            = "#1D918B",
     cyan                = "#47A8A1",
     lightCyan           = "#00BFA4",

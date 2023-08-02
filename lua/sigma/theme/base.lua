@@ -29,7 +29,7 @@ return {
 
     EndOfBuffer         = { fg = c.bg },                                                      -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     ErrorMsg            = { fg = c.error },                                                   -- error messages on the command line
-    FloatBorder         = { fg = c.grey3, bg = c.none },
+    FloatBorder         = { fg = c.cyan, bg = c.black },
     Folded              = { fg = c.grey2, bg = c.black1 },                                    -- line used for closed folds
     FoldColumn          = { fg = c.comment, bg = c.bg },                                      -- "foldcolumn"
     LineNr              = { fg = c.line_fg, bg = c.line_bg },                                 -- Line number for ":number" and ":#" commands, and when "number" or "relativenumber" option is set.
@@ -44,7 +44,7 @@ return {
     Normal              = { fg = c.fg, bg = c.bg },                                           -- normal text
     NormalNC            = { link = "Normal" },                                                -- normal text in non-current windows
     NormalSB            = { link = "Normal" },                                                -- normal text in non-current windows
-    NormalFloat         = { fg = c.fg, bg = c.black1 },                                       -- Normal text in floating windows.
+    NormalFloat         = { fg = c.fg, bg = c.black },                                       -- Normal text in floating windows.
     Pmenu               = { bg = c.grey, fg = c.whiteIsh },                                   -- Popup menu: normal item.
     PmenuSel            = { bg = util.lighten(c.grey, 0.8) },                                 -- Popup menu: selected item.
     PmenuSbar           = { bg = util.lighten(c.black1, 0.95) },                              -- Popup menu: scrollbar.
