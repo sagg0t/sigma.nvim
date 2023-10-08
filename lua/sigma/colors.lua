@@ -76,6 +76,7 @@ local colors = {
     yellowNeon          = "#FFFF00",
     lightYellow         = "#FFEE99",
     lightYellowDimmed   = "#DCDCAA",
+    gold                = "#FFD700",
 
     veryDarkCyan        = "#161C1C",
     darkCyan            = "#1D918B",

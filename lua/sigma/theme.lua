@@ -14,20 +14,21 @@ local uncategorised = {
 
 theme.groups = vim.tbl_extend('force', uncategorised,
                                        require("sigma.theme.base"),
-                                       require("sigma.theme.treesitter"),
-                                       require("sigma.theme.nvim_tree"),
-                                       require("sigma.theme.neotree"),
-                                       require("sigma.theme.diagnostic"),
-                                       require("sigma.theme.cmp"),
-                                       require("sigma.theme.lsp"),
-                                       require("sigma.theme.dap"),
-                                       require("sigma.theme.mini"),
-                                       require("sigma.theme.diff"),
                                        require("sigma.theme.cmake"),
-                                       require("sigma.theme.python"),
-                                       require("sigma.theme.markdown"),
+                                       require("sigma.theme.cmp"),
+                                       require("sigma.theme.dap"),
+                                       require("sigma.theme.diagnostic"),
+                                       require("sigma.theme.diff"),
                                        require("sigma.theme.git_signs"),
-                                       require("sigma.theme.telescope"))
+                                       require("sigma.theme.ibl"),
+                                       require("sigma.theme.lsp"),
+                                       require("sigma.theme.markdown"),
+                                       require("sigma.theme.mini"),
+                                       require("sigma.theme.neotree"),
+                                       require("sigma.theme.nvim_tree"),
+                                       require("sigma.theme.python"),
+                                       require("sigma.theme.telescope"),
+                                       require("sigma.theme.treesitter"))
 
 if not vim.diagnostic then
     local severity_map = {
