@@ -1,132 +1,144 @@
 local c = require("sigma.colors")
-local util = require("sigma.util")
 
 return {
-    Directory           = { fg = c.darkCyan, bg = c.black2 }, -- directory names (and other special names in listings)
-    DiffAdd             = { bg = c.diff.add },                -- diff mode: Added line |diff.txt|
-    DiffChange          = { bg = c.diff.change },             -- diff mode: Changed line |diff.txt|
-    DiffDelete          = { bg = c.diff.delete },             -- diff mode: Deleted line |diff.txt|
-    DiffText            = { bg = c.diff.text },               -- diff mode: Changed text within a changed line |diff.txt|
+    ColorColumn = { fg = c.overlay.bg },
+    Conceal = { link = "Comment" },
+    Cursor = { bg = c.white },
+    lCursor = { link = "Cursor" },
+    CursorIM = { link = "Cursor" },
+    CursorLine = { bg = c.overlay.light.bg },
+    CursorColumn = { link = "CursorLine" },
 
-    Underlined          = { underline = true },               -- (preferred) text that stands out, HTML links
-    Bold                = { bold = true },
-    Italic              = { italic = true },
-    -- ("Ignore", be    low, may be invisible...)
-    -- Ignore = { },     -- (preferred) left blank, hidden  |hl-Ignore|
+    Directory = { fg = c.lightCyan },
 
-    Conceal             = { fg = c.fg },            -- placeholder characters substituted for concealed text (see "conceallevel")
-    Cursor              = { fg = c.bg, bg = c.fg }, -- character under the cursor
-    CursorIM            = { link = "Cursor" },      -- like Cursor, but used when in IME mode |CursorIM|
-    lCursor             = { link = "Cursor" },      -- the character under the cursor when |language-mapping| is used (see "guicursor")
-    ColorColumn         = { bg = c.black3 },        -- used for the columns set with "colorcolumn"
-    CursorLine          = { link = "ColorColumn" }, -- Screen-line at the cursor, when "cursorline" is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-    CursorColumn        = { link = "ColorColumn" }, -- Screen-column at the cursor, when "cursorcolumn" is set.
-    -- TermCursor  = { }, -- cursor in a focused terminal
-    -- TermCursorNC= { }, -- cursor in an unfocused terminal
-    Comment             = { fg = c.comment, italic = true },                                  -- any comment
-    debugPC             = { bg = c.darkCyan },                                                -- used for highlighting the current line in terminal-debug
-    -- debugBreakpoint     = { bg = util.darken(c.info, 0.1), fg = c.lightRed, reverse = true }, -- used for breakpoint colors in terminal-debug
+    Added = { fg = c.git.add },
+    Changed = { fg = c.git.change },
+    Removed = { fg = c.git.delete },
 
-    EndOfBuffer         = { fg = c.bg },                                                      -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
-    ErrorMsg            = { fg = c.error },                                                   -- error messages on the command line
-    FloatBorder         = { fg = c.cyan, bg = c.black },
-    Folded              = { fg = c.grey2, bg = c.black1 },                                    -- line used for closed folds
-    FoldColumn          = { fg = c.comment, bg = c.bg },                                      -- "foldcolumn"
-    LineNr              = { fg = c.line_fg, bg = c.line_bg },                                 -- Line number for ":number" and ":#" commands, and when "number" or "relativenumber" option is set.
-    CursorLineNr        = { fg = c.cl_bg, bg = c.line_bg },                                   -- Like LineNr when "cursorline" or "relativenumber" is set for the cursor line.
-    MatchParen          = { fg = c.red, bold = true },                                        -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-    ModeMsg             = { fg = c.fg, bg = c.bg, bold = true },                              -- "showmode" message (e.g., "-- INSERT -- ")
-    MsgArea             = { fg = c.fg, bg = c.bg },                                           -- Area for messages and cmdline
-    -- MsgSeparator= { }, -- Separator for scrolled messages, `msgsep` flag of "display"
-    MoreMsg             = { fg = c.darkOrange },                                              -- |more-prompt|
+    DiffAdd = { link = "Added" },
+    DiffChange = { link = "Changed" },
+    DiffDelete = { link = "Removed" },
+    DiffText = { fg = c.fg },
 
-    NonText             = { fg = c.non_text },                                                -- "@" at the end of the window, characters from "showbreak" and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn"t fit at the end of the line). See also |hl-EndOfBuffer|.
-    Normal              = { fg = c.fg, bg = c.bg },                                           -- normal text
-    NormalNC            = { link = "Normal" },                                                -- normal text in non-current windows
-    NormalSB            = { link = "Normal" },                                                -- normal text in non-current windows
-    NormalFloat         = { fg = c.fg, bg = c.black },                                       -- Normal text in floating windows.
-    Pmenu               = { bg = c.grey, fg = c.whiteIsh },                                   -- Popup menu: normal item.
-    PmenuSel            = { bg = util.lighten(c.grey, 0.8) },                                 -- Popup menu: selected item.
-    PmenuSbar           = { bg = util.lighten(c.black1, 0.95) },                              -- Popup menu: scrollbar.
-    PmenuThumb          = { bg = c.darkCyan },                                                -- Popup menu: Thumb of the scrollbar.
-    Question            = { fg = c.comment },                                                 -- |hit-enter| prompt and yes/no questions
-    QuickFixLine        = { bg = c.grey1, bold = true },                                      -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search              = { bg = c.green, fg = c.bg },                                        -- Last search pattern highlighting (see "hlsearch").  Also used for similar items that need to stand out.
-    IncSearch           = { bg = c.lightGreen, fg = c.bg },                                   -- "incsearch" highlighting; also used for the text replaced with ":s///c"
-    SpecialKey          = { fg = c.grey6, bold = true },                                      -- Unprintable characters: text displayed differently from what it really is.  But not "listchars" whitespace. |hl-Whitespace|
-    Substitute          = { bg = c.red, fg = c.black },                                       -- |:substitute| replacement text highlighting
-    SignColumn          = { bg = c.line_bg, fg = c.non_text },                                -- column where |signs| are displayed
-    SignColumnSB        = { bg = c.non_text, fg = c.line_bg },                                -- column where |signs| are displayed
-    StatusLine          = { fg = c.black1, bg = c.black1 },                                   -- status line of current window
-    StatusLineNC        = { fg = c.grey6, bg = c.grey },                                      -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-    StatusLineSeparator = { fg = c.dark },
-    StatusLineTerm      = { fg = c.cyan, bg = c.grey },
-    StatusLineTermNC    = { fg = c.grey6, bg = c.grey },
-    TabLine             = { fg = c.comment, bg = c.black },             -- tab pages line, not active tab page label
-    TabLineFill         = { bg = c.black },                             -- tab pages line, where there are no labels
-    TabLineSel          = { fg = c.black, bg = c.darkCyan },            -- tab pages line, active tab page label
-    Title               = { fg = c.grey6, bold = true },                -- titles for output from ":set all", ":autocmd" etc.
-    Todo                = { fg = c.darkYellowDirty, bold = true },      -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-    VertSplit           = { fg = c.darkCyan, bg = c.none },             -- the column separating vertically split windows
-    Visual              = { bg = c.gutter_bg },                         -- Visual mode selection
-    VisualNOS           = { fg = c.selection_fg, bg = c.selection_bg }, -- Visual mode selection when vim is "Not Owning the Selection".
-    Whitespace          = { fg = c.non_text },                          -- "nbsp", "space", "tab" and "trail" in "listchars"
-    WildMenu            = { fg = c.fg, bg = c.black1 },                 -- current match in "wildmenu" completion
+    EndOfBuffer = { fg = c.greyMid },
+    TermCursor = { link = "Cursor" },
+    TermCursorNC = { link = "Cursor" },
 
+    ErrorMsg = { fg = c.severity.error },
+    WarningMsg = { fg = c.severity.warning },
 
-    SpellBad   = { sp = c.error, undercurl = true },   -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-    SpellCap   = { sp = c.warning, undercurl = true }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-    SpellLocal = { sp = c.info, undercurl = true },    -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-    SpellRare  = { sp = c.hint, undercurl = true },    -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+    WinSeparator = { fg = c.greyMid, bg = c.bg },
+    Folded = { fg = c.invisibleGrey },
+    FoldColumn = { fg = c.overlay.fg, bg = c.overlay.bg },
+    SignColumn = { fg = c.overlay.fg, bg = c.overlay.bg, },
+    LineNr = { fg = c.overlay.fg, bg = c.overlay.bg },
+    LineNrAbove = { link = "LineNr" },
+    LineNrBelow = { link = "LineNr" },
+    CursorLineNr = { fg = c.overlay.accent, bg = c.overlay.bg },
+    CursorLineFold = { link = "FoldColumn" },
+    CursorLineSign = { link = "SignColumn" },
+    MatchParen = { fg = c.pinkNeon, bold = true, underline = true },
+    ModeMsg = { fg = c.fg, bold = true },
+    MsgArea = { fg = c.fg, bg = c.overlay.bg },
+    MsgSeparator = { bg = c.overlay.bg },
+    MoreMsg = { fg = c.orange, bg = c.overlay.bg },
+    NonText = { fg = c.greyMid },
+    Normal = { fg = c.fg, bg = c.bg },
+    NormalNC = { link = "Normal" },
 
-    Error      = { fg = c.error, undercurl = true },   -- (preferred) any erroneous construct
-    WarningMsg = { fg = c.warning },                   -- warning messages
+    NormalFloat = { bg = c.overlay.bg },
+    FloatBorder = { fg = c.greyMid, bg = c.overlay.bg },
+    FloatTitle = { fg = c.overlay.accent, bg = c.overlay.bg },
+    FloatFooter = { link = "FloatTitle" },
 
-    htmlH1     = { fg = c.magenta, bold = true },
-    htmlH2     = { fg = c.blue, bold = true },
-    htmlTSTag  = { fg = c.darkCyan, bold = true },
+    Pmenu = { bg = c.overlay.bg },
+    PmenuSel = { bg = c.darkPink },
+    PmenuKind = { fg = c.invisibleGrey },
+    PmenuKindSel = { link = "PmenuKind" },
+    PmenuExtra = { fg = c.whiteIsh },
+    PmenuExtraSel = { link = "PmenuExtra" },
+    PmenuSbar = { bg = c.overlay.bg },
+    PmenuThumb = { bg = c.darkCyan },
 
+    Question = { link = "Comment" },
 
-    -- These groups are not listed as default vim groups,
-    -- but they are defacto standard group names for syntax highlighting.
-    -- commented out groups should chain up to their "preferred" group by
-    -- default,
-    -- Uncomment and edit if you want more specific syntax highlighting.
+    QuickFixLine = { bold = true },
 
-    Constant       = { fg = c.cyan },                        -- (preferred) any constant
-    String         = { fg = c.lightYellow },                 --   a string constant: "this is a string"
-    Character      = { fg = c.lightGreen },                  --  a character constant: "c", "\n"
-    Number         = { fg = c.lightPinkDimmed },             --   a number constant: 234, 0xff
-    Boolean        = { fg = util.lighten(c.magenta, 0.75) }, --  a boolean constant: TRUE, false
-    Float          = { fg = c.lightPinkDimmed },             --    a floating point constant: 2.3e10
+    Search = { fg = c.fg, bg = c.green },
+    CurSearch = { fg = c.bg, bg = c.lightYellow },
+    IncSearch = { bg = c.green },
+    Substitute = { fg = c.fg, bg = c.pinkNeon },
 
-    Identifier     = { fg = c.whiteIsh },                    -- (preferred) any variable name
-    Function       = { fg = c.lightCyan },                   -- function name (also: methods for classes)
+    SpecialKey = { fg = c.greyMid },
+    SpellBad = { sp = c.severity.error, undercurl = true },
+    SpellCap = { sp = c.severity.warning, undercurl = true },
+    SpellLocal = { sp = c.severity.info, undercurl = true },
+    SpellRare = { sp = c.severity.hint, undercurl = true },
 
-    Statement      = { fg = c.pinkNeon },                    -- (preferred) any statement
-    -- Conditional         = {  }, --  if, then, else, endif, switch, etc.
-    -- Repeat              = {  }, --   for, do, while, etc.
-    -- Label               = {  }, --    case, default, etc.
+    StatusLine = { fg = c.fg, bg = c.overlay.bg },
+    StatusLineNC = { link = "StatusLine" },
 
-    Operator       = { fg = util.lighten(c.lightCyan, 0.5) }, -- "sizeof", "+", "*", etc.
-    Keyword        = { fg = c.pinkNeon, italic = true },      --  any other keyword
-    Exception      = { fg = util.lighten(c.pinkNeon, 0.9) },  --  try, catch, throw
+    TabLine = { fg = c.overlay.fg, bg = c.overlay.bg },
+    TabLineFill = { bg = c.overlay.bg },
+    TabLineSel = { fg = c.overlay.bg, bg = c.darkCyan },
 
-    PreProc        = { fg = c.cyanGreen },                    -- (preferred) generic Preprocessor
-    Include        = { fg = c.pinkNeon },                     --     preprocessor #include
-    Define         = { fg = c.lightPinkDimmed },              --     preprocessor #define
-    Macro          = { fg = c.lightPinkDimmed },              --     same as Define
-    PreCondit      = { fg = c.lightPinkDimmed },              --     preprocessor #if, #else, #endif, etc.
+    Title = { fg = c.whiteIsh },
 
-    Type           = { fg = c.blueIce },                      -- (preferred) int, long, char, etc.
-    StorageClass   = { fg = c.pinkNeon },                     -- static, register, volatile, etc.
-    Structure      = { fg = c.cyanGreen },                    --  struct, union, enum, etc.
-    Typedef        = { fg = c.blueIce },                      --  A typedef
+    Visual = { bg = c.selection },
+    VisualNOS = { bg = c.selection },
 
-    Special        = { fg = c.orangeDimmed },                 -- (preferred) any special symbol
-    SpecialChar    = { fg = c.grey4 },                        --  special character in a constant
-    Tag            = { fg = c.darkBlue },                     --    you can use CTRL-] on this
-    Delimiter      = { fg = c.grey6 },                        --  character that needs attention
-    SpecialComment = { fg = c.cyan },                         -- special things inside a comment
-    Debug          = { fg = c.fg },                           --    debugging statements
+    Whitespace = { fg = c.greyMid },
+    WildMenu = { fg = c.whiteIsh },
+    WinBar = { link = "TabLine" },
+    WinBarNC = { link = "Tabline" },
+    Scrollbar = { fg = c.darkCyan },
+    Menu = { link = "UNSET" }, -- Mostly GUI only
+    Tooltip = { link = "UNSET" }, -- Mostly GUI only
+
+    -- :h syntax.txt:184
+    Comment = { fg = c.invisibleGrey, italic = true },
+
+    Constant = { fg = c.darkCyan, bold = true },
+    String = { fg = c.lightYellow },
+    Character = { fg = c.orange },
+    Number = { fg = c.pinkDimmed },
+    Float = { link = "Number" },
+    Boolean = { fg = c.lightPurple },
+
+    Identifier = { fg = c.whiteIsh },
+    Function = { fg = c.lightCyan },
+
+    Statement = { fg = c.pinkNeon },
+    Conditional = { fg = c.pinkNeon },
+    Repeat = { link = "Statement" },
+    Label = { link = "Conditional" },
+    Operator = { fg = c.bleachedCyan, bold = true },
+    Keyword = { link = "Statement" },
+    Exception = { fg = c.pinkNeon, italic = true},
+
+    PreProc = { fg = c.pinkDimmed },
+    Include = { fg = c.pinkDimmed, bold = true },
+    Define = { link = "PreProc" },
+    Macro = { link = "PreProc" },
+    PreCondit = { link = "PreProc" },
+
+    Type = { fg = c.blueIce },
+    StorageClass = { fg = c.pinkNeon, italic = true },
+    Structure = { fg = c.darkCyan, bold = true },
+    Typedef = { link = "Type" },
+
+    Special = { fg = c.orange },
+    SpecialChar = { fg = c.orange },
+    Tag = { fg = c.darkBlue },
+    Delimiter = { link = "Operator" },
+    SpecialComment = { fg = c.invisibleGrey, bold = true },
+    Debug = { fg = c.pinkNeon, italic = true, underline = true },
+
+    Underlined = { underline = true },
+    Bold = { bold = true },
+
+    Ignore = { link = "Comment" },
+
+    Error = { fg = c.severity.error },
+    Todo = { fg = c.severity.info },
 }

@@ -1,24 +1,20 @@
 local c = require("sigma.colors")
 
 return {
-    TelescopeBorder         = { fg = c.black, bg = c.black },
-    TelescopeNormal         = { fg = c.fg, bg = c.black },
+    TelescopeNormal         = { fg = c.fg, bg = c.overlay.bg },
+    TelescopeBorder         = { fg = c.overlay.bg, bg = c.overlay.bg },
 
-    TelescopePromptNormal   = { fg = c.fg, bg = c.black },
-    TelescopePromptBorder   = { fg = c.black, bg = c.black },
-    TelescopePromptTitle    = { fg = c.black, bg = c.black },
+    TelescopePromptNormal   = { fg = c.fg, bg = c.overlay.bg },
+    TelescopePromptBorder   = { fg = c.overlay.bg, bg = c.overlay.bg },
+    TelescopePromptTitle    = { fg = c.overlay.bg, bg = c.overlay.bg },
     TelescopePromptPrefix   = { fg = c.lightCyan },
     TelescopePromptCounter  = { link = "TelescopePromptPrefix" },
 
-    TelescopeResultsNormal  = { bg = c.black },
-    TelescopeResultsBorder  = { fg = c.black, bg = c.black },
-    TelescopeResultsTitle   = { fg = c.black, bg = c.black },
+    TelescopePreviewNormal  = { bg = c.deadCyan },
+    TelescopePreviewBorder  = { fg = c.deadCyan, bg = c.deadCyan },
+    TelescopePreviewTitle   = { bg = c.deadCyan },
 
-    TelescopePreviewNormal  = { bg = c.veryDarkCyan },
-    TelescopePreviewBorder  = { fg = c.veryDarkCyan, bg = c.veryDarkCyan },
-    TelescopePreviewTitle   = { fg = c.veryDarkCyan, bg = c.veryDarkCyan },
-
-    TelescopeMatching       = { fg = c.pinkNeon, bg = c.black },
-    TelescopeSelection      = { fg = c.white, bg = c.grey },
-    TelescopeSelectionCaret = { fg = c.pinkNeon, bg = c.grey },
+    TelescopeMatching       = { fg = c.pinkNeon },
+    TelescopeSelection      = { bg = c.darkPink },
+    TelescopeSelectionCaret = { fg = c.pinkNeon, bg = c.darkPink },
 }

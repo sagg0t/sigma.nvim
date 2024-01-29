@@ -2,35 +2,35 @@ local c = require("sigma.colors")
 
 local sigma = {
     normal = {
-        a = { bg = c.lightCyan, fg = c.black, gui = "bold" },
-        b = { bg = c.black, fg = c.lightCyan },
-        c = { bg = c.black3, fg = c.fg_sidebar },
+        a = { fg = c.bg, bg = c.lightCyan, gui = "bold" },
+        b = { fg = c.lightCyan, bg = c.overlay.bg  },
+        c = { fg = c.overlay.fg, bg = c.overlay.bg },
     },
 
     insert = {
-        a = { bg = c.lightOrange, fg = c.black, gui = "bold" },
-        b = { bg = c.black, fg = c.lightOrange },
+        a = { fg = c.bg, bg = c.orange, gui = "bold" },
+        b = { fg = c.orange, bg = c.overlay.bg },
     },
 
     command = {
-        a = { bg = c.blueIce, fg = c.black, gui = "bold" },
-        b = { fg = c.blueIce, bg = c.black },
+        a = { fg = c.bg, bg = c.blueIce, gui = "bold" },
+        b = { fg = c.blueIce, bg = c.overlay.bg },
     },
 
     visual = {
-        a = { bg = c.purple, fg = c.black, gui = "bold" },
-        b = { bg = c.black, fg = c.purple },
+        a = { fg = c.bg, bg = c.purple, gui = "bold" },
+        b = { fg = c.purple, bg = c.overlay.bg },
     },
 
     replace = {
-        a = { bg = c.pinkNeon, fg = c.black, gui = "bold" },
-        b = { bg = c.black, fg = c.pinkNeon },
+        a = { fg = c.bg, bg = c.pinkNeon, gui = "bold" },
+        b = { fg = c.pinkNeon, bg = c.overlay.bg },
     },
 
     inactive = {
-        a = { bg = c.black3, fg = c.grey3 },
-        b = { bg = c.black3, fg = c.grey3, gui = "bold" },
-        c = { bg = c.black3, fg = c.grey3 },
+        a = { bg = c.bg, fg = c.fg },
+        b = { bg = c.bg, fg = c.fg, gui = "bold" },
+        c = { bg = c.bg, fg = c.fg },
     }
 }
 

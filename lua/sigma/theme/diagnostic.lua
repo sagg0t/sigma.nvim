@@ -1,19 +1,26 @@
 local c = require("sigma.colors")
-local util = require("sigma.util")
+local u = require("sigma.util")
 
 return {
-    DiagnosticError             = { fg = c.error }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-    DiagnosticWarn              = { fg = c.warning }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-    DiagnosticInfo              = { fg = c.info }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-    DiagnosticHint              = { fg = c.hint }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+    -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+    DiagnosticError = { fg = c.severity.error },
+    DiagnosticWarn  = { fg = c.severity.warning },
+    DiagnosticInfo  = { fg = c.severity.info },
+    DiagnosticHint  = { fg = c.severity.hint },
+    DiagnosticOk    = { fg = c.severity.hint },
 
-    DiagnosticVirtualTextError  = { fg = c.error,   bg = util.darken(c.error, 0.1) }, -- Used for "Error" diagnostic virtual text
-    DiagnosticVirtualTextWarn   = { fg = c.warning, bg = util.darken(c.warning, 0.1) }, -- Used for "Warning" diagnostic virtual text
-    DiagnosticVirtualTextInfo   = { fg = c.info,    bg = util.darken(c.info, 0.1) }, -- Used for "Information" diagnostic virtual text
-    DiagnosticVirtualTextHint   = { fg = c.hint,    bg = util.darken(c.hint, 0.1) }, -- Used for "Hint" diagnostic virtual text
+    DiagnosticVirtualTextError = { fg = c.severity.error, bg = u.darken(c.severity.error, 0.1) },
+    DiagnosticVirtualTextWarn  = { fg = c.severity.warning, bg = u.darken(c.severity.warning, 0.1) },
+    DiagnosticVirtualTextInfo  = { fg = c.severity.info, bg = u.darken(c.severity.info, 0.1) },
+    DiagnosticVirtualTextHint  = { fg = c.severity.hint, bg = u.darken(c.severity.hint, 0.1) },
 
-    DiagnosticUnderlineError    = { sp = c.error,   undercurl = true }, -- Used to underline "Error" diagnostics
-    DiagnosticUnderlineWarn     = { sp = c.warning, undercurl = true }, -- Used to underline "Warning" diagnostics
-    DiagnosticUnderlineInfo     = { sp = c.info,    undercurl = true }, -- Used to underline "Information" diagnostics
-    DiagnosticUnderlineHint     = { sp = c.hint,    undercurl = true }, -- Used to underline "Hint" diagnostics
+    DiagnosticUnderlineError = { sp = c.severity.error,   undercurl = false },
+    DiagnosticUnderlineWarn  = { sp = c.severity.warning, undercurl = false },
+    DiagnosticUnderlineInfo  = { sp = c.severity.info,    undercurl = false },
+    DiagnosticUnderlineHint  = { sp = c.severity.hint,    undercurl = false },
+
+    DiagnosticSignError = { fg = c.severity.error, bg = c.overlay.bg },
+    DiagnosticSignWarn  = { fg = c.severity.warning, bg = c.overlay.bg },
+    DiagnosticSignInfo  = { fg = c.severity.info, bg = c.overlay.bg },
+    DiagnosticSignHint  = { fg = c.severity.hint, bg = c.overlay.bg },
 }
