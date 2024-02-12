@@ -29,4 +29,7 @@ return {
 
     -- Lua
     ["@constructor.lua"] = { link = "Function" },
+
+    -- Embedded templates
+    ["@keyword.embedded_template"] = { link = "@tag.delimiter" },
 }

@@ -1,7 +1,7 @@
 local c = require("sigma.colors")
 
 return {
-    ColorColumn = { fg = c.overlay.bg },
+    ColorColumn = { bg = c.darkPink },
     Conceal = { link = "Comment" },
     Cursor = { bg = c.white },
     lCursor = { link = "Cursor" },
