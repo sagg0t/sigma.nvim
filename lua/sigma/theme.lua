@@ -20,6 +20,7 @@ theme.groups = vim.tbl_extend('force', uncategorised,
                                        require("sigma.theme.ibl"),
                                        require("sigma.theme.telescope"),
                                        require("sigma.theme.which_key"),
-                                       require("sigma.theme.treesitter"))
+                                       require("sigma.theme.treesitter"),
+                                       require("sigma.theme.neotest"))
 
 return theme
