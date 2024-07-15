@@ -22,6 +22,8 @@ return {
 
     -- Go
     ["@type.builtin.go"] = { fg = c.pinkWarm, italic = true },
+    ["@lsp.typemod.type.defaultLibrary.go"] = { link = "@type.builtin.go" },
+    ["@lsp.mod.defaultLibrary.go"] = { link = "@constant.builtin.go" },
 
     -- Ruby
     ["@keyword.conditional.ruby"] = { fg = c.pinkNeon, italic = true },
@@ -32,4 +34,9 @@ return {
 
     -- Embedded templates
     ["@keyword.embedded_template"] = { link = "@tag.delimiter" },
+
+    ["@lsp.typemod.variable.readonly"] = { link = "@constant" },
+    ["@lsp.typemod.variable.defaultLibrary"] = { link = "@constant.builtin" },
+    ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
+    ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
 }
