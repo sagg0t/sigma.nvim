@@ -43,7 +43,8 @@ return {
     MsgSeparator = { bg = c.overlay.bg },
     MoreMsg = { fg = c.orange, bg = c.overlay.bg },
     NonText = { fg = c.greyMid },
-    Normal = { fg = c.fg, bg = c.bg },
+    -- Normal = { fg = c.fg, bg = c.bg },
+    Normal = { fg = c.fg, bg = c.none },
     NormalNC = { link = "Normal" },
 
     NormalFloat = { bg = c.overlay.bg },
@@ -92,7 +93,7 @@ return {
     WinBar = { link = "TabLine" },
     WinBarNC = { link = "Tabline" },
     Scrollbar = { fg = c.darkCyan },
-    Menu = { link = "UNSET" }, -- Mostly GUI only
+    Menu = { link = "UNSET" },    -- Mostly GUI only
     Tooltip = { link = "UNSET" }, -- Mostly GUI only
 
     -- :h syntax.txt:184
@@ -114,7 +115,7 @@ return {
     Label = { link = "Conditional" },
     Operator = { fg = c.bleachedCyan, bold = true },
     Keyword = { link = "Statement" },
-    Exception = { fg = c.pinkNeon, italic = true},
+    Exception = { fg = c.pinkNeon, italic = true },
 
     PreProc = { fg = c.pinkDimmed },
     Include = { fg = c.pinkDimmed, bold = true },

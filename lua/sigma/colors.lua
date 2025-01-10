@@ -6,7 +6,8 @@ local colors = {
     fg = "#D4D8C0",
     bg = "#1a1a1a",
 
-    selection = "#282C34",
+    -- selection = "#282C34",
+    selection = "#424556",
 
     overlay = {
         fg = "#747578",

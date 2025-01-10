@@ -28,6 +28,7 @@ return {
     -- Ruby
     ["@keyword.conditional.ruby"] = { fg = c.pinkNeon, italic = true },
     ["@variable.member.ruby"] = { fg = c.darkCyan },
+    ["@lsp.typemod.variable.default_library"] = { link = "@variable.builtin" },
 
     -- Lua
     ["@constructor.lua"] = { link = "Function" },
