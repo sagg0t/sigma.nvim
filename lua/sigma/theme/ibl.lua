@@ -1,5 +1,6 @@
 local c = require("sigma.colors")
 
 return {
-    IblScope = { fg = c.pinkNeon },
+    IndentLine = { fg = c.greyMid },
+    IndentLineCurrent = { fg = c.pinkNeon },
 }
