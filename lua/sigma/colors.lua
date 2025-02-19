@@ -1,4 +1,5 @@
 local u = require("sigma.util")
+COLORU = u
 
 local colors = {
     none = "NONE",
