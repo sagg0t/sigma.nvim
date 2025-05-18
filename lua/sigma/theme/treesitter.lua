@@ -3,6 +3,7 @@ local c = require("sigma.colors")
 return {
     ["@comment.note"] = { link = "DiagnosticHint" },
     ["@comment.todo"] = { link = "DiagnosticInfo" },
+    ["@conditional"] = { link = "Conditional" },
     ["@constant"] = { fg = c.darkCyan },
     ["@constant.builtin"] = { fg = c.orangeDimmed },
     ["@constant.macro"] = { link = "Macro" },
