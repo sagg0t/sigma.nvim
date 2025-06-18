@@ -22,8 +22,9 @@ local colors = {
     severity = {
         error = u.darken("#F92672", 0.7),
         warning = u.lighten("#ED722E", 0.8),
-        info = u.darken("#00DFFF", 0.7),
-        hint = "#44B273",
+        hint = u.darken("#00DFFF", 0.7),
+        info = u.darken("#d4d8c0", 0.8),
+        ok = "#44B273",
     },
 
     git = {
